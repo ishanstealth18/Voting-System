@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+
+    <style>
+    table, tr, td{
+    border:1px solid black;
+    }
+    </style>
+</head>
+<body>
+    <div style="background-color: lightblue; text-align: center">
+        <h1>Polls Results</h1>
+    </div>
+
+    <div>
+        <h1>{{ question.question_text }}</h1>
+        <table style="width:100%">
+        {% for choice in choice_list %}
+        {
+            <tr>
+                <td style="word-spacing: 10px">
+                    <p style="text-align: left">{{choice.choice_text}}
+                        <span style="float:right; border-style: solid; background-color: green; border-radius: 8px; color: white;
+                        padding-left: 5px; padding-right: 5px"><b>{{choice.votes}} Votes</b></span></p>
+                </td>
+            </tr>
+        }
+        {% endfor %}
+        </table>
+        <br>
+        <a href="/poll_questions.html/">
+            <button style="background-color:grey; color: white" type="submit" >Back to Polls</button>
+        </a>
+        <a href="{% url 'vote_page' question.id %}">
+            <button style="background-color:black; color: white" type="button">Vote Again?</button>
+        </a>
+
+    </div>
+</body>
+</html>

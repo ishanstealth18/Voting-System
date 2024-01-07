@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vote</title>
+</head>
+<body>
+
+    <div style="background-color: lightblue; text-align: center">
+        <h1>Polls Questions</h1>
+    </div>
+
+    <div>
+        <button onclick="location.href='/poll_questions.html/'" name="poll_questions" style="background-color: grey; color: white; border-radius: 4px">Back to Poll Questions</button><br>
+        <h1>{{ question.question_text }}</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% for choice in choices %}
+            <br>
+            <input type="radio" value="{{ choice.choice_text }}" id="choice{{ forloop.counter }}" name="choice">
+            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+            {% endfor %}
+            <br>
+            <input type="submit" value="Vote" style="background-color: MediumSeaGreen; border-radius: 4px; color:white;">
+        </form>
+        <br>
+    </div>
+
+
+</body>
+</html>

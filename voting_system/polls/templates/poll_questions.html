@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Poll Questions</title>
+</head>
+<body>
+    <div style="background-color: lightblue; text-align: center">
+        <h1>Polls Questions</h1>
+    </div>
+
+    <div style="text-align: center; margin-left: 540px; margin-right: 540px; padding-right: 100px">
+        <ul>
+            {% for q in questions %}
+            <li style="color: grey">{{ q.question_text }}</li><br>
+                <a href="{% url 'vote_page' q.id %}">
+                    <button name="vote_now" value="Vote Now" style="background-color: rgb(59 130 246); color: white; margin: auto; border-radius: 4px">Vote Now</button>
+                </a>
+                <a href="{% url 'results_page' q.id %}">
+                    <button name="vote_results" value="Results" style="background-color: black; color: white; margin-right:35px; border-radius: 4px">Results</button><br><br>
+                </a>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
